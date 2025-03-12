@@ -113,7 +113,10 @@ require '../config.php';
                     </div>
                   </div>
                 </div>
-                <div class="mt-3 d-grid">
+                <div class="text-center mb-3">
+  <img src="smaitdiw.png" alt="Logo Sekolah" width="80">
+</div>
+               <div class="mt-3 d-grid">
                   <button type="submit" name = "register" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN UP</button>
                 </div>
                 <div class="text-center mt-4 font-weight-light">
