@@ -13,13 +13,13 @@
             <?php if ($_SESSION['ssRole']== 1){ ?>
           
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<?= $mainUrl ?>">
               <i class="ti-dashboard menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?= $mainUrl ?>pengaturan">
               <i class="ti-settings menu-icon"></i>
               <span class="menu-title">Pengaturan</span>
             </a>

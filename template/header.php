@@ -16,6 +16,16 @@
   <link rel="stylesheet" href="<?= $mainUrl ?>css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="<?= $mainUrl ?>images/layout.png" />
+  <!--ckeditor-->
+  <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.3.0/ckeditor5.css" />
+
+  <style>
+    .ck-editor__editable[role="textbox"]{
+      min-height: 100px;
+    }
+
+
+  </style>
 </head>
 <body>
   <div class="container-scroller">

@@ -47,7 +47,7 @@ require '../config.php';
                         <i class="ti-user text-primary"></i>
                       </span>
                     </div>
-                    <input type="email" name = "email" class="form-control form-control-lg border-left-0" id="exampleInputEmail" placeholder="Username">
+                    <input type="email" name = "email" class="form-control form-control-lg border-left-0" id="exampleInputEmail" placeholder="Masukkan email anda">
                   </div>
                 </div>
                 <div class="form-group">
