@@ -48,5 +48,12 @@
   <!-- End custom js for this page-->
   <!-- chart js -->
   <script src="js/chart.js"></script>
+
+  <!--data table-->
+  <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+
+  <script>
+    let table = new DataTable('#mytable');
+  </script>
 </body>
 </html>

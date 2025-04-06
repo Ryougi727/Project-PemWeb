@@ -5,10 +5,17 @@
         <a class="navbar-brand brand-logo-mini" href="index.html"><i class="ti-shield menu-icon text-secondary"></i></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="ti-view-list"></span>
-        </button>
-        <ul class="navbar-nav navbar-nav-right">
+        <?php
+            if ($_SESSION['ssRole'] == 1){
+                         echo  '<button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                      <span class="ti-view-list"></span></button>';
+            }else{
+              echo'<a class="navbar-brand brand-logo me-5 text-secondary fs-3" href="#">Ujian Online</a>';
+            }
+        ?>
+        
+       
+        <ul class="navbar-nav navbar-nav-right" id="nav_user">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
               <?= 'Selamat datang, <b>' . $_SESSION['ssUser'] . '</b>' ?>
@@ -25,6 +32,17 @@
             </div>
           </li>
         </ul>
+
+        <ul class="navbar-nav navbar-nav-right" id="nav_ujian">
+    <li class="nav-item dropdown">
+        <?php if (basename($_SERVER['PHP_SELF']) == 'soal.php'): ?>
+            <span class="fw-bold fs-6 me-2">Sisa Waktu:</span>
+            <button type="button" class="btn btn-outline-danger btn-xs fs-6" id="sisa">
+                <?= isset($ujian['waktu']) ? durasi($ujian['waktu']) : '00:00:00' ?>
+            </button>
+        <?php endif; ?>
+    </li>
+</ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="ti-view-list"></span>
         </button>
@@ -32,3 +50,5 @@
     </nav>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
+
+    

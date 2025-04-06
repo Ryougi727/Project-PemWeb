@@ -18,6 +18,8 @@
   <link rel="shortcut icon" href="<?= $mainUrl ?>images/layout.png" />
   <!--ckeditor-->
   <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.3.0/ckeditor5.css" />
+  <!--data table-->
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css">
 
   <style>
     .ck-editor__editable[role="textbox"]{
@@ -27,5 +29,5 @@
 
   </style>
 </head>
-<body>
+<body class="<?=$_SESSION ['ssRole'] == 2 ? 'sidebar-icon-only' : null ?>">
   <div class="container-scroller">

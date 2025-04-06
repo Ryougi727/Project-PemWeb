@@ -22,6 +22,21 @@ if($_SESSION['ssRole'] !=2){
   exit();
 }
 
+//cek apakah sudah ada ujian yang diambil
+$idUser = $_SESSION['ssId'];
+$queryNilai = mysqli_query($koneksi, "SELECT * FROM tbl_nilai WHERE id_user='$idUser'");
+$cekNilai = mysqli_num_rows($queryNilai);
+if ($cekNilai){
+  echo "<script>
+        alert('Anda sudah mengikuti ujian ini');
+        window.location='hasil-ujian.php';
+  </script>";
+  exit();
+}
+
+$queryAturan = mysqli_query($koneksi, "SELECT * FROM tbl_pengaturan");
+$row         = mysqli_fetch_assoc($queryAturan);
+
 ?>
    
       
@@ -35,14 +50,47 @@ if($_SESSION['ssRole'] !=2){
                   <h3 class="font-weight-bold mb-0">Peraturan</h3>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-warning btn-icon-text btn-rounded">
+                    <a href="soal.php" onclick="return confirm('Apakah anda sudah siap untuk memulai ujian?')" class="btn btn-warning btn-icon-text btn-rounded">
                       <i class="ti-angle-double-right btn-icon-prepend"></i> Mulai Ujian
-                    </button>
+                    </a>
                 </div>
               </div>
             </div>
           </div>
-         
+         <div class="card">
+          <div class="card-body">
+            <div class="col-md-10 px-lg-4">
+              <p class="card-title text-center fs-4 py-3">Ujian Online</p>
+              <div class="row mb-3">
+                <div class="col-6 col-lg-3 col-md-3">
+                  Durasi Ujian
+                </div>
+                <div class="col-6 col-lg-9 col-md-9">
+                  <?= ': ' .$row['waktu'] . 'menit' ?>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-6 col-lg-3 col-md-3">
+                  Syarat Nilai Kelulusan
+                </div>
+                <div class="col-6 col-lg-9 col-md-9">
+                  <?= ': ' .$row['nilai_minimal'] . '' ?>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col fw-bold fs-5 text-secondary">
+                  Ketentuan-Ketentuan : 
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col">
+                  <?= html_entity_decode($row['peraturan']) ?>
+                </div>
+              </div>
+              <h4 class = "text-secondary mb-5">Selamat Mengerjakan</h4>
+            </div>
+          </div>
+         </div>
         </div>
         <!-- content-wrapper ends -->
       </div>

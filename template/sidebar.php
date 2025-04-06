@@ -25,7 +25,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?= $mainUrl ?>soal">
               <i class="ti-file menu-icon"></i>
               <span class="menu-title">Soal</span>
             </a>
