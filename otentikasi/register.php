@@ -114,7 +114,7 @@ require '../config.php';
                   </div>
                 </div>
                 <div class="text-center mb-3">
-  <img src="smaitdiw.png" alt="Logo Sekolah" width="80">
+                <img src="<?= $mainUrl ?>images/auth/ilmi.jpg" alt="SMAIT DAARUL ILMI" width="60">
 </div>
                <div class="mt-3 d-grid">
                   <button type="submit" name = "register" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN UP</button>
@@ -125,7 +125,7 @@ require '../config.php';
               </form>
             </div>
           </div>
-          <div class="col-lg-6 register-half-bg d-flex flex-row">
+          <div class="col-lg-6 register-half-bg d-flex flex-row" style="background-image: url('<?= $mainUrl ?>images/auth/sekolah2.jpg'); background-size: cover; background-position: center;">
           </div>
         </div>
       </div>

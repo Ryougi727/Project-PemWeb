@@ -70,7 +70,7 @@ require '../config.php';
               </form>
             </div>
           </div>
-          <div class="col-lg-6 login-half-bg d-flex flex-row">
+          <div class="col-lg-6 register-half-bg d-flex flex-row" style="background-image: url('<?= $mainUrl ?>images/auth/sekolah3.png'); background-size: cover; background-position: center;"></div></div>
           </div>
         </div>
       </div>
