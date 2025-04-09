@@ -15,7 +15,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= $mainUrl ?>css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="<?= $mainUrl ?>images/layout.png" />
+  <link rel="shortcut icon" href="<?= $mainUrl ?>images/auth/ilmi.jpg" />
   <!--ckeditor-->
   <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.3.0/ckeditor5.css" />
   <!--data table-->

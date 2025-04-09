@@ -29,7 +29,7 @@ require '../config.php';
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= $mainUrl ?>css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="<?= $mainUrl ?>images/layout.png" />
+  <link rel="shortcut icon" href="<?= $mainUrl ?>images/auth/ilmi.jpg" />
 </head>
 
 <body>
