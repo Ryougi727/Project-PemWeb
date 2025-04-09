@@ -6,31 +6,34 @@ if (!isset($_SESSION['ssLogin'])) {
 }
 require "../config.php";
 
-if(isset($_POST['update'])){
+// Fungsi untuk mengunggah gambar
+
+
+
+// Tambah soal
+if (isset($_POST['save'])) {
     $soal = htmlspecialchars($_POST['soal']);
-    $gambar = htmlspecialchars($_FILES['gambar']['name']);
+    $gambar = !empty($_FILES['gambar']['name']) ? uploadImg('add-soal.php') : '';
     $a = htmlspecialchars($_POST['a']);
     $b = htmlspecialchars($_POST['b']);
     $c = htmlspecialchars($_POST['c']);
     $d = htmlspecialchars($_POST['d']);
     $kunci = htmlspecialchars($_POST['kunci']);
 
-    if ($gambar != null){
-        $page = 'add-soal.php';
-        $gambar = uploadImg($page);
-        
-    }else{
-        $gambar = '';
+    $query = "INSERT INTO tbl_soal (pertanyaan, gambar, a, b, c, d, kunci_jawaban) 
+              VALUES ('$soal', '$gambar', '$a', '$b', '$c', '$d', '$kunci')";
+    if (mysqli_query($koneksi, $query)) {
+        echo "<script>
+              alert('Soal Baru Berhasil Ditambahkan');
+              window.location='add-soal.php';
+        </script>";
+    } else {
+        echo "<script>
+              alert('Gagal menambahkan soal: " . mysqli_error($koneksi) . "');
+              window.location='add-soal.php';
+        </script>";
     }
-    
-
-    mysqli_query($koneksi,"INSERT INTO tbl_soal VALUES (null, '$soal', '$gambar', '$a', '$b', '$c', '$d', '$kunci')");
-    
-    echo "<script>
-    alert('Soal Baru Berhasil Ditambahkan');
-    window.location='add-soal.php';
-</script>";
-return;
+    return;
 }
 
 // Hapus soal
@@ -71,9 +74,18 @@ if (isset($_GET['op']) && $_GET['op'] == 'delete') {
     return;
 }
 
-//update soal
-if(isset($_POST['save'])){
-    $id = $_POST['id'];
+// Update soal
+if (isset($_POST['update'])) {
+    // Validasi ID
+    if (!isset($_POST['id']) || empty($_POST['id']) || !is_numeric($_POST['id'])) {
+        echo "<script>
+              alert('ID tidak valid');
+              window.location='index.php';
+        </script>";
+        return;
+    }
+
+    $id = intval($_POST['id']);
     $soal = htmlspecialchars($_POST['soal']);
     $gambar = htmlspecialchars($_FILES['gambar']['name']);
     $gbrLama = htmlspecialchars($_POST['gambarlama']);
@@ -83,22 +95,25 @@ if(isset($_POST['save'])){
     $d = htmlspecialchars($_POST['d']);
     $kunci = htmlspecialchars($_POST['kunci']);
 
-    if ($gambar != null){
-        $page = 'index.php';
-        $gbrSoal = uploadImg($page);
-        @unlink('../images/soal/'.$gbrLama);
-    }else{
+    if (!empty($_FILES['gambar']['name'])) {
+        $gbrSoal = uploadImg('index.php');
+        @unlink('../images/soal/' . $gbrLama); // Hapus gambar lama
+    } else {
         $gbrSoal = $gbrLama;
     }
-    
 
-   mysqli_query($koneksi,"UPDATE tbl_soal SET pertanyaan = '$soal', gambar = '$gbrSoal', a = '$a', b = '$b', c = '$c', d = '$d', kunci_jawaban = '$kunci' WHERE id = $id");
-    
-    echo "<script>
-    alert('Soal Baru Berhasil Diperbarui');
-    window.location='index.php';
-</script>";
-return;
+    $query = "UPDATE tbl_soal SET pertanyaan = '$soal', gambar = '$gbrSoal', a = '$a', b = '$b', c = '$c', d = '$d', kunci_jawaban = '$kunci' WHERE id = $id";
+    if (mysqli_query($koneksi, $query)) {
+        echo "<script>
+              alert('Soal Berhasil Diperbarui');
+              window.location='index.php';
+        </script>";
+    } else {
+        echo "<script>
+              alert('Gagal memperbarui soal: " . mysqli_error($koneksi) . "');
+              window.location='index.php';
+        </script>";
+    }
+    return;
 }
-
 ?>
