@@ -31,7 +31,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?= $mainUrl ?>nilai">
               <i class="ti-bar-chart-alt menu-icon"></i>
               <span class="menu-title">Nilai Ujian</span>
             </a>

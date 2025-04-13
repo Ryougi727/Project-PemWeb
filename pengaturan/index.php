@@ -66,7 +66,7 @@ $row = mysqli_fetch_assoc($query);
                             <div class="form-group row mb-2">
                                 <label for="peraturan" class="col-form-label-sm col-sm-3">Peraturan</label>
                                 <div class="col-sm-9">
-                                    <textarea name="peraturan" id="editor"><?= $row['peraturan'] ?></textarea>
+                                    <textarea name="peraturan" id="editor" style="width: 100%; height: 200px;"><?= $row['peraturan'] ?></textarea>
                                 </div>
                             </div>
                         </div>

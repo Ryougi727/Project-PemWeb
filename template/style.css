@@ -1,0 +1,15 @@
+/* ...existing code... */
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.rounded {
+  border-radius: 8px;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
